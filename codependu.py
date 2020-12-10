@@ -27,7 +27,7 @@ def Generationmot(fichiermots):
         
     ldonnees=[]                     #création de la liste des lettres déjà sasies par le joueur
 
-    chances=8
+    chances=7
       
     svj.set(motjoueur)          #redonne un mot pour une nouvelle partie
     Canevas.delete("all")       #efface le canevas avant chaque nouvelle partie 
@@ -79,23 +79,22 @@ def Affichage():
     for i in Ljoueur:
         motjoueur=motjoueur+i+" "
     svj.set(motjoueur)
-    if chances<=7:
-        Canevas.create_line(20,180,120,180)      #creation du pendu qui augmente plus le nombre de chances diminue
-    if chances<=6:
-        Canevas.create_line(70,180,70,20)
-    if chances<=5:
-        Canevas.create_line(70,20,150,20)
-    if chances<=4:
-        Canevas.create_line(70,60,110,20)
+    if chances==7:
+        item = Canevas.create_image(150,150,image=image1)   #creation du pendu qui augmente plus le nombre de chances diminue
+    if chances==6:
+        item = Canevas.create_image(150,150,image=image2)
+    if chances==5:
+        item = Canevas.create_image(150,150,image=image3)
+    if chances==4:
+        item = Canevas.create_image(150,150,image=image4)
     if chances<=3:
-        Canevas.create_line(150,20,150,50)
-    if chances<=2:
-        Canevas.create_oval(140,50,160,70)
-    if chances<=1:
-        Canevas.create_line(150,70,150,105)
-    if chances<=0:
-        Canevas.create_line(150,70,135,85)
-        Canevas.create_line(150,70,165,85)
+        item = Canevas.create_image(150,150,image=image5)
+    if chances==2:
+        item = Canevas.create_image(150,150,image=image6)
+    if chances==1:
+        item = Canevas.create_image(150,150,image=image7)
+    if chances==0:
+        item =Canevas.create_image(150,150,image=image8)
     Canevas.update()                   #rafraichit le canevas
     
 
@@ -135,9 +134,19 @@ global Lmot,Ljoueur,chances,ldonnees,lettre
 
 Mafenetre = Tk()           #creation de la fenetre principale
 Mafenetre.title("Jeu du pendu")
-L=200
-H=200
+L=300
+H=300
+image1=PhotoImage(master=Mafenetre, file='bonhomme1.gif')
+image2=PhotoImage(master=Mafenetre, file='bonhomme2.gif')
+image3=PhotoImage(master=Mafenetre, file='bonhomme3.gif')
+image4=PhotoImage(master=Mafenetre, file='bonhomme4.gif')
+image5=PhotoImage(master=Mafenetre, file='bonhomme5.gif')
+image6=PhotoImage(master=Mafenetre, file='bonhomme6.gif')
+image7=PhotoImage(master=Mafenetre, file='bonhomme7.gif')
+image8=PhotoImage(master=Mafenetre, file='bonhomme8.gif')
+
 Canevas=Canvas(Mafenetre, width=L, height=H)  #création d'un widget Canvas (zone graphique)
+item = Canevas.create_image(150,150,image=image1)
 Canevas.pack(padx=5,pady=5)
 svj = StringVar()
 svj.set("")
